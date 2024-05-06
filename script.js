@@ -1,21 +1,31 @@
 const container = document.querySelector('.container');
 const button = document.querySelector('button');
+const range = document.querySelector('input');
 let row;
 let column;
+let gridWidth = range.value;
 
-for (let i=1; i <=16 ; i++){
-    row = document.createElement('div');
-    row.classList.add('row');
-    container.appendChild(row);
-  for (let j=1 ; j <=16 ; j++){
-    column = document.createElement('div');
-    column.classList.add('column');
-    row.appendChild(column);
-    column.addEventListener('mouseover',function(){
-        this.classList.add('click')
-    })
- }
+function createGrid (gridWidth){
+    container.innerHTML='';
+    for (let i=1; i <=gridWidth ; i++){
+        row = document.createElement('div');
+        row.classList.add('row');
+        container.appendChild(row);
+      for (let j=1 ; j <=gridWidth ; j++){
+        column = document.createElement('div');
+        column.classList.add('column');
+        row.appendChild(column);
+        column.addEventListener('mouseover',function(){
+            this.classList.add('click')
+        })
+     }
+    }
 }
+range.addEventListener('input',function(){
+    gridWidth = this.value;
+    createGrid(gridWidth);
+})
+
 
 
 
